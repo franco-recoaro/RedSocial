@@ -1,4 +1,4 @@
-import toallin from "../../resources/images/toallin.png"
+import toallin from "../../resources/images/toallin.png";
 import {Link} from "react-router-dom";
 const NavBar = () => {
     return (
