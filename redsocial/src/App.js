@@ -1,11 +1,13 @@
-import './App.css'; 
+import './App.css';
 import { NavBar } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<NavBar />} />
+        </Routes>
+      </BrowserRouter>
   );
 }
 
