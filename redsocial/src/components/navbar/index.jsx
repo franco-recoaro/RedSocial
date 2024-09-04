@@ -4,10 +4,11 @@ const NavBar = () => {
             <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Perfil</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Tendencias</a></li>
+                <li><a href="#">Configuracion</a></li>
             </ul>
         </div>
     );
 };
 
-export default NavBar;
+export default {NavBar};
