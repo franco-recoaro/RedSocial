@@ -1,1 +1,1 @@
-import {navBar} from './navbar'
+export {NavBar} from './navbar/index.jsx';
