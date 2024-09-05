@@ -23,3 +23,12 @@
     text-decoration: none;
     color: black;
 }
+
+.mainContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    min-height: 70vh;
+}
+
