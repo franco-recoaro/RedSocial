@@ -33,7 +33,7 @@ const Register = () => {
                 <input id="fotoPerfil" name="fotoPerfil" accept="image/*" type="file" />
                 <input type="submit" />
             </form>
-            Si ya tienes cuenta, puedes iniciar sesión <Link to="/Login">ahora mismo</Link>
+            Si ya tienes cuenta, puedes iniciar sesión <Link to="/login">ahora mismo</Link>
         </div>
     );
 };
