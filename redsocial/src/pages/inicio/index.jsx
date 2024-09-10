@@ -9,8 +9,8 @@ const Main = () => {
           <h1>Bienvenido a Toallap</h1>
           <h2>Conectate con personas de todo el mundo</h2>
           <div>
-          <Link to="/register">Registrate</Link>
-          <Link to="/conectar">Conectar</Link>          
+          <Link to="/register">Registrate</Link>{' '}
+          <Link to="/login">Conectar</Link>          
           </div>
         </div>
       </div>
