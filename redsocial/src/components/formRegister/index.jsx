@@ -23,8 +23,19 @@ const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(datos);
+    if (datos.nombre == "" || datos.apellido == "" || datos.email == "" || datos.ubicacion == "" || datos.sexo == "" || datos.fechaNac == "" || datos.username == "" || datos.password == "") {
+      alert ("Los campos no pueden estar vacios")
+      return
+    }
+    console.log(datos)
   };
+
+  const updatePerfil = (e) => {
+    const urlPhoto = URL.createObjectURL(e.target.files[0]) //agarra toda la informacion del archivo (Puede utilizarse en PDF, imagenes, etc)
+    setDatos((prev) => {
+      return {...prev, fotoPerfil: urlPhoto}
+    })
+  }
 
   return (
     <div>
@@ -92,7 +103,7 @@ const RegisterForm = () => {
           onInput={handleInputChange}
         />
         <label htmlFor="fotoPerfil">Foto perfil:</label>
-        <input id="fotoPerfil" name="fotoPerfil" accept="image/*" type="file" />
+        <input id="fotoPerfil" name="fotoPerfil" accept="image/*" type="file" onInput={updatePerfil}/>
         <input type="submit" />
       </form>
       Si ya tienes cuenta, puedes iniciar sesión{" "}
