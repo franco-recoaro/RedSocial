@@ -4,7 +4,7 @@ import connection from "../modules/conexion.mjs"; // VARIABLE CONEXION BASE DE D
 function traerTodos(req, res) {
   // REQ = INFORMACION SOLICITADA POR EL FRONT
   // RES = INFORMACION DE RESPUESTA DADA POR EL BACK
-  let query = "SELECT....."; // QUERY QUE SE VA A EJECUTAR A LA BASE DE DATOS
+  let query = "SELECT" //"SELECT; // QUERY QUE SE VA A EJECUTAR A LA BASE DE DATOS
 
   let resultados = connection.query(query, (err, results) => {
     // METODO DE CONNECTION (CONEXION BASE DE DATOS ), PARA PODER ENVIARLE LA QUERY Y OBTENER UNA RESPUESTA PARA RESOLVER SOLICITUD
@@ -18,9 +18,22 @@ function traerTodos(req, res) {
   });
 }
 
+function obtenerCuentas(req,res){
+  let query = "SELECT * from cuentas"
+  
+  let resultados = connection.query(query, (error, results) =>{
+    if (error){
+      res.status(500).send("Error al obtener cuentas");
+    } else {
+      res.status(200).json(results);
+    }
+  })
+}
+
 // SE CREA UN OBJETO PARA EXPORTAR TODOS LOS CONTROLADORES Y QUE SEA MAS FACIL SU MANENJO
 let appControllers = {
   traerTodos,
+  obtenerCuentas
 };
 
 export default appControllers;

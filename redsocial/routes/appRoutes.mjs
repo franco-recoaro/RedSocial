@@ -3,6 +3,6 @@ import appControllers from "../controllers/appController.mjs"; // IMPORTACION DE
 
 const router = Router(); // SE INVOCA EL MODULO ROUTER EN UNA VARIABLE PARA LUEGO UTILIZAR SUS METODOS
 
-router.get("/prueba1", "ACA SE EJECUTA EL CONTROLLER CORRESPONDIENTE"); // SE CREA LA RUTA /PRUEBA1 Y EN ESA RUTA SE EJECUTA LA FUNCION TRAER SEGUIDORES DESDE APP CONTROLLER
+router.get("/", appControllers.obtenerCuentas)
 
 export default router;
