@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { registroNuevaCuenta } from "../../api/scripts";
 
 const RegisterForm = () => {
   const [datos, setDatos] = useState({
@@ -21,21 +22,32 @@ const RegisterForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (datos.nombre == "" || datos.apellido == "" || datos.email == "" || datos.ubicacion == "" || datos.sexo == "" || datos.fechaNac == "" || datos.username == "" || datos.password == "") {
-      alert ("Los campos no pueden estar vacios")
-      return
+    if (
+      datos.nombre == "" ||
+      datos.apellido == "" ||
+      datos.email == "" ||
+      datos.ubicacion == "" ||
+      datos.sexo == "" ||
+      datos.fechaNac == "" ||
+      datos.username == "" ||
+      datos.password == ""
+    ) {
+      alert("Los campos no pueden estar vacios");
+      return;
     }
-    console.log(datos)
+  
+    await registroNuevaCuenta(datos);
+
   };
 
   const updatePerfil = (e) => {
-    const urlPhoto = URL.createObjectURL(e.target.files[0]) //agarra toda la informacion del archivo (Puede utilizarse en PDF, imagenes, etc)
+    const urlPhoto = URL.createObjectURL(e.target.files[0]); //agarra toda la informacion del archivo (Puede utilizarse en PDF, imagenes, etc)
     setDatos((prev) => {
-      return {...prev, fotoPerfil: urlPhoto}
-    })
-  }
+      return { ...prev, fotoPerfil: urlPhoto };
+    });
+  };
 
   return (
     <div>
@@ -103,7 +115,13 @@ const RegisterForm = () => {
           onInput={handleInputChange}
         />
         <label htmlFor="fotoPerfil">Foto perfil:</label>
-        <input id="fotoPerfil" name="fotoPerfil" accept="image/*" type="file" onInput={updatePerfil}/>
+        <input
+          id="fotoPerfil"
+          name="fotoPerfil"
+          accept="image/*"
+          type="file"
+          onInput={updatePerfil}
+        />
         <input type="submit" />
       </form>
       Si ya tienes cuenta, puedes iniciar sesión{" "}

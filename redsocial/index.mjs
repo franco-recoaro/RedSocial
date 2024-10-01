@@ -7,13 +7,19 @@ import cors from "cors"; // LIBRERIAS PARA HACER PETICIONES DE FORMA LOCAL
 import router from "./routes/appRoutes.mjs";
 cors(); // LLAMADA DE LA LIBRERIA CORS PARA PODER HACER INTERCONSULTAS EN LOCALHOST
 
-
 const PORT = process.env.PORT;
 
 const app = express(); // LLAMAMOS A LA FUNCION EXPRESS Y LA ALMACENAMOS EN UNA VARIABLE PARA UTILIZAR SUS METODOS
 app.use(express.json()); // MIDDLEWARE PARA USAR FORMATO JSON;
-app.use(router) // SE USA EL METODO USE PARA APLICAR LAS RUTAS CREADAS PREVIAMENTE EN EL SERVIDOR
-
+app.use(router); // SE USA EL METODO USE PARA APLICAR LAS RUTAS CREADAS PREVIAMENTE EN EL SERVIDOR
+app.use(
+  cors({
+    origin: "http://localhost:3002", // Permite solicitudes solo desde el puerto 3002
+    credentials: true, // Si necesitas cookies o cabeceras adicionales
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"], // Métodos permitidos
+  })
+);
+app.options("*", cors());
 
 app.listen(PORT, () => {
   console.log(`Server corriendo en puerto ${PORT}`);
