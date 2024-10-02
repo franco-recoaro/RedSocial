@@ -1,14 +1,13 @@
-const URL_REGISTROCUENTAS = "http://localhost:3001/registroNuevo";
+const URL_REGISTROCUENTAS = "http://localhost:3000/registroNuevo";
 
 async function registroNuevaCuenta(formDatos) {
   try {
     let response = await fetch(URL_REGISTROCUENTAS, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      credentials: "include", // Para enviar cookies si es necesario
       body: JSON.stringify(formDatos),
     });
 
