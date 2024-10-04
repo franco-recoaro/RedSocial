@@ -36,10 +36,9 @@ const RegisterForm = () => {
     ) {
       alert("Los campos no pueden estar vacios");
       return;
+    } else {
+      await registroNuevaCuenta(datos);
     }
-  
-    await registroNuevaCuenta(datos);
-
   };
 
   const updatePerfil = (e) => {

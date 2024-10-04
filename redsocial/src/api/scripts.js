@@ -20,7 +20,6 @@ async function registroNuevaCuenta(formDatos) {
 
     const data = await response.json();
     alert(data.msg);
-
   } catch (error) {
     console.error("Error en la solicitud:", error);
   }
