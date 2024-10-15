@@ -3,7 +3,7 @@ import appControllers from "../controllers/appController.mjs"; // IMPORTACION DE
 
 const router = Router(); // SE INVOCA EL MODULO ROUTER EN UNA VARIABLE PARA LUEGO UTILIZAR SUS METODOS
 
-router.get("/", appControllers.obtenerCuentas)
-router.post("/registroNuevo", appControllers.registroCuentaNueva)
+router.get("/", appControllers.obtenerCuentas);
+router.post("/registroNuevo", appControllers.registroCuentaNueva);
 
 export default router;

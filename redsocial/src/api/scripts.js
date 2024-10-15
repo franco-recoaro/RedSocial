@@ -1,4 +1,4 @@
-const URL_REGISTROCUENTAS = "http://localhost:3000/registroNuevo";
+const URL_REGISTROCUENTAS = "http://localhost:3001/registroNuevo";
 
 async function registroNuevaCuenta(formDatos) {
   try {
@@ -7,8 +7,11 @@ async function registroNuevaCuenta(formDatos) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formDatos),
+      credentials: 'include'
+      
     });
 
     // Verifica si la respuesta fue exitosa

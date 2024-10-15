@@ -40,11 +40,14 @@ function registroCuentaNueva(req, res) {
     ubicacion,
     sexo,
     fechaNac,
-    fotoPerfil,
+    fotoPerfil
   } = req.body;
 
+
+  let biografia = "Usuario nuevo"
+
   let query =
-    "INSERT INTO cuentas (password, username, email, nombre, apellido, ubicacion, sexo, fecha_nacimiento, foto_perfil) VALUES (?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO cuentas (password, username, email, nombre, apellido, ubicacion, sexo, biografia,foto_perfil,fecha_nacimiento) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
   let resultados = connection.query(
     query,
@@ -56,8 +59,9 @@ function registroCuentaNueva(req, res) {
       apellido,
       ubicacion,
       sexo,
-      fechaNac,
+      biografia,
       fotoPerfil,
+      fechaNac
     ], // SIEMPRE MANTENER EL ORDEN RESPECTO A LOS ?? DE LA QUERY
     (error, results) => {
       if (error) {
@@ -65,11 +69,10 @@ function registroCuentaNueva(req, res) {
           .status(500)
           .json({
             msgError:
-              "Error al registrar la cuenta, informacion invalida o incorrecta",
+             "Error al crear la cuenta " + error
           });
-      } else {
-        res.status(200).json({ msg: "Cuenta creada correctamente" });
       }
+        res.status(200).json({ msg: "Cuenta creada correctamente" });
     }
   );
 }
