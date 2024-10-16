@@ -37,6 +37,7 @@ const RegisterForm = () => {
       alert("Los campos no pueden estar vacios");
       return;
     } else {
+      console.log(datos)
       await registroNuevaCuenta(datos);
     }
   };

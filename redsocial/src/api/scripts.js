@@ -7,17 +7,13 @@ async function registroNuevaCuenta(formDatos) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formDatos),
-      credentials: 'include'
-      
     });
 
     // Verifica si la respuesta fue exitosa
     if (!response.ok) {
-      const data = await response.json();
-      alert(data.msgError || "Error en la solicitud");
+      alert("El nombre de usuario ya existe");
       return;
     }
 

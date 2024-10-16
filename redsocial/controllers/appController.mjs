@@ -31,6 +31,8 @@ function obtenerCuentas(req, res) {
 }
 
 function registroCuentaNueva(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+
   let {
     password,
     username,
@@ -40,16 +42,15 @@ function registroCuentaNueva(req, res) {
     ubicacion,
     sexo,
     fechaNac,
-    fotoPerfil
+    fotoPerfil,
   } = req.body;
 
-
-  let biografia = "Usuario nuevo"
+  let biografia = "Usuario nuevo";
 
   let query =
-    "INSERT INTO cuentas (password, username, email, nombre, apellido, ubicacion, sexo, biografia,foto_perfil,fecha_nacimiento) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    "INSERT INTO cuentas (password, username, email, nombre, apellido, ubicacion, sexo, biografia, foto_perfil, fecha_nacimiento) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
-  let resultados = connection.query(
+  connection.query(
     query,
     [
       password,
@@ -61,18 +62,15 @@ function registroCuentaNueva(req, res) {
       sexo,
       biografia,
       fotoPerfil,
-      fechaNac
-    ], // SIEMPRE MANTENER EL ORDEN RESPECTO A LOS ?? DE LA QUERY
+      fechaNac,
+    ],
     (error, results) => {
       if (error) {
-        res
-          .status(500)
-          .json({
-            msgError:
-             "Error al crear la cuenta " + error
-          });
+        return res.status(500).json({
+          msgError: "Error al crear la cuenta: " + error,
+        });
       }
-        res.status(200).json({ msg: "Cuenta creada correctamente" });
+      res.status(200).json({ msg: "Cuenta creada correctamente" });
     }
   );
 }
